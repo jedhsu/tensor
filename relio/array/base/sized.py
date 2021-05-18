@@ -38,6 +38,37 @@ class _Default_:
         return AbstractSizedArray((5, 5, 5))
 
 
+# class _Display_:
+#     # TODO: lets see if this messes anything up
+#     dim: Sequence[int]
+
+#     def _build_left_border(
+
+
+class _DisplayVector_:
+    dim: Sequence[int]
+
+    def build_display(self, max_cell_width: int = 100):
+        ...
+
+
+class _ValidateVector_:
+    dim: Sequence[int]
+
+    def validate(self):
+        assert len(self.dim) == 1, TypeError("Array dimensions not equal to 1.")
+
+
+class _DisplayMatrix_:
+    dim: Sequence[int]
+
+    def _build_axis(self):
+        ...
+
+    def _build_cell(self):
+        ...
+
+
 class AbstractSizedArray(
     _Default_,
     _ElementSized_,
