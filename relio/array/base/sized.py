@@ -6,6 +6,20 @@ from .dtype import *
 __all__ = ["AbstractSizedArray"]
 
 
+class _AbstractSizedArray_:
+    dim: Sequence[int]
+
+
+class _Eq_(_AbstractSizedArray_):
+    def __eq__(self, arr: AbstractSizedArray) -> bool:
+        return self.dim == arr.dim
+
+
+class _MemorySized_(_AbstractSizedArray_):
+    def memsize(self):
+        ...
+
+
 class _Default_:
     @staticmethod
     def _1d():
@@ -24,14 +38,12 @@ class _Default_:
         return AbstractSizedArray((5, 5, 5))
 
 
-class _Eq_:
-    dim: Sequence[int]
-
-    def __eq__(self, arr: AbstractSizedArray) -> bool:
-        return self.dim == arr.dim
-
-
-class AbstractSizedArray(_Default_, _Eq_):
+class AbstractSizedArray(
+    _Default_,
+    _MemorySized_,
+    _Eq_,
+    _AbstractSizedArray_,
+):
     dim: Sequence[int]
 
     def __init__(self, dim: Sequence[int], *args, **kwargs):

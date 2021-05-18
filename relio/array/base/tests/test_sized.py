@@ -1,6 +1,6 @@
 from ..dtype import *
 from ..sized import *
-from ..sized import _Default_, _Eq_
+from ..sized import _AbstractSizedArray_, _Default_, _Eq_, _MemorySized_
 
 
 class TestAbstractSizedArray:
@@ -14,7 +14,9 @@ class TestAbstractSizedArray:
         assert AbstractSizedArray.__mro__ == (
             AbstractSizedArray,
             _Default_,
+            _MemorySized_,
             _Eq_,
+            _AbstractSizedArray_,
             object,
         )
 
