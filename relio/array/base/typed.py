@@ -1,9 +1,19 @@
 from __future__ import annotations
+from typing import Callable, GenericAlias
 
 from .dtype import *
 
+__all__ = [
+    "AbstractTypedArray",
+    "_Build_",
+]
 
-__all__ = ["AbstractTypedArray"]
+
+class _Eq_:
+    dtype: Dtype
+
+    def __eq__(self, arr: AbstractTypedArray) -> bool:
+        return self.dtype == arr.dtype
 
 
 class _Default_:
@@ -34,21 +44,28 @@ class _Default_:
         return AbstractTypedArray(f32)
 
 
-class _Eq_:
+class _Build_:
     dtype: Dtype
-
-    def __eq__(self, arr: AbstractTypedArray) -> bool:
-        return self.dtype == arr.dtype
+    __getitem__: Callable
 
 
-class AbstractTypedArray(_Default_, _Eq_):
+class _Annotated_:
+    """Overloads for static type annotations."""
+
+    __class_getitem__ = classmethod(GenericAlias)
+
+
+class AbstractTypedArray(
+    _Annotated_,
+    _Build_,
+    _Default_,
+    _Eq_,
+):
     dtype: Dtype
 
     def __init__(self, dtype: Dtype, *args, **kwargs):
         self.dtype = dtype
         super(AbstractTypedArray, self).__init__(*args, **kwargs)
-
-    __class_getitem__: classmethod
 
     def _repr_dtype(self) -> str:
         return self.dtype.name

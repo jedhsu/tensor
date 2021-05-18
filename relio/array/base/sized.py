@@ -1,4 +1,4 @@
-from __future__ import annotations
+from math import prod
 from typing import Sequence
 
 from .dtype import *
@@ -11,13 +11,13 @@ class _AbstractSizedArray_:
 
 
 class _Eq_(_AbstractSizedArray_):
-    def __eq__(self, arr: AbstractSizedArray) -> bool:
+    def __eq__(self, arr: _AbstractSizedArray_) -> bool:
         return self.dim == arr.dim
 
 
-class _MemorySized_(_AbstractSizedArray_):
-    def memsize(self):
-        ...
+class _ElementSized_(_AbstractSizedArray_):
+    def elsize(self):
+        return prod(self.dim)
 
 
 class _Default_:
@@ -40,7 +40,7 @@ class _Default_:
 
 class AbstractSizedArray(
     _Default_,
-    _MemorySized_,
+    _ElementSized_,
     _Eq_,
     _AbstractSizedArray_,
 ):

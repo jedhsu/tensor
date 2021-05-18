@@ -1,6 +1,6 @@
 from ..dtype import *
 from ..typed import *
-from ..typed import _Default_, _Eq_
+from ..typed import _Annotated_, _Build_, _Default_, _Eq_
 
 
 class TestAbstractTypedArray:
@@ -13,6 +13,8 @@ class TestAbstractTypedArray:
     def test_mro(self):
         assert AbstractTypedArray.__mro__ == (
             AbstractTypedArray,
+            _Annotated_,
+            _Build_,
             _Default_,
             _Eq_,
             object,

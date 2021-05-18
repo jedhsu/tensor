@@ -1,6 +1,6 @@
 from ..dtype import *
 from ..sized import *
-from ..sized import _AbstractSizedArray_, _Default_, _Eq_, _MemorySized_
+from ..sized import _AbstractSizedArray_, _Default_, _ElementSized_, _Eq_
 
 
 class TestAbstractSizedArray:
@@ -14,7 +14,7 @@ class TestAbstractSizedArray:
         assert AbstractSizedArray.__mro__ == (
             AbstractSizedArray,
             _Default_,
-            _MemorySized_,
+            _ElementSized_,
             _Eq_,
             _AbstractSizedArray_,
             object,
@@ -29,6 +29,9 @@ class TestAbstractSizedArray:
 
     def test_eq(self):
         assert AbstractSizedArray((5, 3)) == AbstractSizedArray((5, 3))
+
+    def test_element_sized(self):
+        assert AbstractSizedArray((5, 3)).elsize() == 15
 
     def test_defaults(self):
         assert AbstractSizedArray._1d() == AbstractSizedArray((5,))

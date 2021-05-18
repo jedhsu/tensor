@@ -18,7 +18,14 @@ __all__ = [
 ]
 
 
-class Dtype(Enum):
+class _Display_:
+    name: str
+
+    def __repr__(self):
+        return f"Datatype[{self.name}]"
+
+
+class Dtype(_Display_, Enum):
     dtype = jnp.dtype
 
     b8 = jnp.bool_
