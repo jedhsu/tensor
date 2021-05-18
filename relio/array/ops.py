@@ -9,10 +9,78 @@ class Construct(Enum):
     empty = jnp.empty
 
 
+class UnaOp(Enum):
+    abs = jnp.abs
+    absolute = jnp.absolute
+
+
+class BitwiseBinOp(Enum):
+    bitwise_and = jnp.bitwise_and
+    # bitwise_not = jnp.bitwise_not
+    bitwise_or = jnp.bitwise_or
+    bitwise_xor = jnp.bitwise_xor
+
+
+class BinOp(Enum):
+    ...
+
+
+class Trig(Enum):
+    cos = jnp.cos
+    cosh = jnp.cosh
+
+    arcsin = jnp.arcsin
+    arcsinh = jnp.arcsinh
+    arccos = jnp.arccos
+    arccosh = jnp.arccosh
+    arctan = jnp.arctan
+    arctan2 = jnp.arctan2
+    arctanh = jnp.arctanh
+
+
+class LogCmp(Enum):
+    logical_and = jnp.logical_and
+    # logical_not = jnp.logical_not
+    logical_or = jnp.logical_or
+    logical_xor = jnp.logical_xor
+
+
+class Join(Enum):
+    ...
+
+
+class Stat(Enum):
+    mean = jnp.mean
+    median = jnp.median
+
+    histogram = jnp.histogram
+    histogram_bin_edges = jnp.histogram_bin_edges
+    histogram2d = jnp.histogram2d
+    histogramdd = jnp.histogramdd
+
+
+class Log(Enum):
+    log = jnp.log
+    log10 = jnp.log10
+    log1p = jnp.log1p
+    log2 = jnp.log2
+
+
+class Exp(Enum):
+    ...
+
+
+class ModArithmetic(Enum):
+    remainder = jnp.remainder
+
+
+class Optimization(Enum):
+    argmax = jnp.argmax
+    argmin = jnp.argmin
+
+
 # # TODO: organize numpy api
 numpy_api = [
-    abs,
-    absolute,
     add,
     all,
     allclose,
@@ -25,15 +93,6 @@ numpy_api = [
     apply_along_axis,
     apply_over_axes,
     arange,
-    arccos,
-    arccosh,
-    arcsin,
-    arcsinh,
-    arctan,
-    arctan2,
-    arctanh,
-    argmax,
-    argmin,
     argsort,
     argwhere,
     around,
@@ -51,10 +110,6 @@ numpy_api = [
     bartlett,
     bfloat16,
     bincount,
-    bitwise_and,
-    bitwise_not,
-    bitwise_or,
-    bitwise_xor,
     blackman,
     block,
     bool_,
@@ -82,8 +137,6 @@ numpy_api = [
     copysign,
     corrcoef,
     correlate,
-    cos,
-    cosh,
     count_nonzero,
     cov,
     cross,
@@ -107,7 +160,6 @@ numpy_api = [
     double,
     dsplit,
     dstack,
-    dtype,
     e,
     ediff1d,
     einsum,
@@ -129,9 +181,6 @@ numpy_api = [
     flip,
     fliplr,
     flipud,
-    float16,
-    float32,
-    float64,
     float_,
     float_power,
     floating,
@@ -151,10 +200,6 @@ numpy_api = [
     hamming,
     hanning,
     heaviside,
-    histogram,
-    histogram_bin_edges,
-    histogram2d,
-    histogramdd,
     hsplit,
     hstack,
     hypot,
@@ -167,10 +212,6 @@ numpy_api = [
     in1d,
     inf,
     inner,
-    int16,
-    int32,
-    int64,
-    int8,
     int_,
     integer,
     interp,
@@ -202,23 +243,13 @@ numpy_api = [
     lexsort,
     linspace,
     load,
-    log,
-    log10,
-    log1p,
-    log2,
     logaddexp,
     logaddexp2,
-    logical_and,
-    logical_not,
-    logical_or,
-    logical_xor,
     logspace,
     mask_indices,
     matmul,
     max,
     maximum,
-    mean,
-    median,
     meshgrid,
     mgrid,
     min,
@@ -282,7 +313,6 @@ numpy_api = [
     ravel_multi_index,
     real,
     reciprocal,
-    remainder,
     repeat,
     reshape,
     result_type,

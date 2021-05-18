@@ -1,61 +1,67 @@
 from __future__ import annotations
-from typing import Callable, GenericAlias, Sequence
+from typing import Callable, GenericAlias, Optional, Sequence
 
 import jax.numpy as jnp
 
-from .dtype import *
-from .fn import Fn
+from .base import AbstractArray, AbstractTypedArray, Dtype, i16
 
-# TODO: AbstractSizedArray and AbstractTypedArray can be generalized to Sized and ContainerTyped
-class AbstractSizedArray:
-    dim: Sequence[int]
-
-    def __init__(self, dim: Sequence[int], *args, **kwargs):
-        self.dim = dim
-        super(AbstractSizedArray, self).__init__(*args, **kwargs)
+# from .fn import Fn
 
 
-class AbstractTypedArray:
-    dtype: Dtype
-
-    def __init__(self, dtype: Dtype, *args, **kwargs):
-        self.dtype = dtype
-        super(AbstractTypedArray, self).__init__(*args, **kwargs)
-
-    __class_getitem__: classmethod
+__all__ = ["Array"]
 
 
-class AbstractArray(AbstractTypedArray, AbstractSizedArray):
-    def __init__(self, dtype: Dtype, dim: Sequence[int], *args, **kwargs):
-        super(AbstractArray, self).__init__(dtype, dim, *args, **kwargs)
+class _Display_:
+    """Move to abstract, and give symbols."""
+
+    def _build_display(self, cellwidth=2):
+        ...
+
+    def _build_row(self, row_index: int, cell_width=2):
+        """
+        Row index is the index of the matrix arity.
+        """
+
+    def _build_cell(self, cell_index):
+        ...
+
+    def display(self):
+        ...
 
 
-def declare_size(cls, size):
-    return AbstractArray
+class _Default_:
+    @staticmethod
+    def i16_square():
+        return Array(dtype=i16, dim=(3, 3), constructor=jnp.zeros)
 
 
-AbstractTypedArray.__class_getitem__ = classmethod(declare_size)
-
-
-class DeviceArray:
+class DeviceArray(AbstractArray):
     def __init__(
         self,
         dtype: Dtype,
         dim: Sequence[int],
         constructor: Callable,
+        populator: Optional[Sequence] = None,
     ):
         self._arr = constructor(shape=dim, dtype=dtype.value)
-        super(DeviceArray, self).__init__()
+        if populator:
+            self._arr = populator
+        super(DeviceArray, self).__init__(dtype, dim)
 
 
-class Array(AbstractArray, DeviceArray):
+class Array(
+    DeviceArray,
+    _Default_,
+    _Display_,
+):
     def __init__(
         self,
         dtype: Dtype,
         dim: Sequence[int],
-        builder: Callable,
+        constructor: Callable,
+        populator: Optional[Sequence] = None,
     ):
-        super(Array, self).__init__(dtype, dim, jnp.zeros)
+        super(Array, self).__init__(dtype, dim, constructor, populator)
 
     __class_getitem__ = classmethod(AbstractTypedArray)
 

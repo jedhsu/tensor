@@ -2,8 +2,27 @@ from enum import Enum
 
 import jax.numpy as jnp
 
+__all__ = [
+    "Dtype",
+    "u8",
+    "u16",
+    "u32",
+    "u64",
+    "i8",
+    "i16",
+    "i32",
+    "i64",
+    "f16",
+    "f32",
+    "f64",
+]
+
 
 class Dtype(Enum):
+    dtype = jnp.dtype
+
+    b8 = jnp.bool_
+
     u8 = jnp.uint8
     u16 = jnp.uint16
     u32 = jnp.uint32
