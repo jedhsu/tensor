@@ -1,3 +1,0 @@
-"""
-Callable typing.
-"""
