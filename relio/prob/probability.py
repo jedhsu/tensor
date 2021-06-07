@@ -27,3 +27,7 @@ class Probabilistic(Compute):
     @property
     def std(self) -> float:
         ...
+
+
+class Probability(float):
+    ...

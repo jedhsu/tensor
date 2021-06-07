@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterator
 
+__all__ = ["State"]
 
 # TODO: very clear that state needs a join function
 

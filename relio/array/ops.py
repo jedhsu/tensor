@@ -3,10 +3,53 @@ from enum import Enum
 import jax.numpy as jnp
 
 
-class Construct(Enum):
+class Constant:
+    E = jnp.e
+    PI = jnp.pi
+
+
+# [TODO] move to types
+class AdditionalTypes:
+    complex128 = jnp.complex128
+    complex64 = jnp.complex64
+    complex_ = jnp.complex_
+
+    double = jnp.double
+    cdouble = jnp.cdouble
+
+
+class Cast:
+    """
+    Type promotion and demotion.
+
+    """
+
+    promote_types = jnp.promote_types
+    can_cast = jnp.can_cast  # [TODO] clarify
+
+
+# ----
+
+# [TODO] typing can get much tighter
+class Construct:
     zeros = jnp.zeros
     ones = jnp.ones
+
     empty = jnp.empty
+    full = jnp.full
+
+    arange = jnp.arange
+
+    # TODO: IDEALLY want Fn[N, Array[Dtype][N]]
+    # arange: Callable[[N],
+
+
+class ConstructRelative(Construct):
+    zeros_like = jnp.zeros_like
+    ones_like = jnp.ones_like
+
+    empty_like = jnp.empty_like
+    full_like = jnp.full_like
 
 
 class UnaOp(Enum):
@@ -25,17 +68,38 @@ class BinOp(Enum):
     ...
 
 
-class Trig(Enum):
+class ForwardTrig(Trig):
+    sin = jnp.sin
+    sinh = jnp.sinh
+
     cos = jnp.cos
     cosh = jnp.cosh
 
+    tan = jnp.tan
+    tanh = jnp.tanh
+
+
+class BackwardTrig(Trig):
     arcsin = jnp.arcsin
     arcsinh = jnp.arcsinh
+
     arccos = jnp.arccos
     arccosh = jnp.arccosh
+
     arctan = jnp.arctan
     arctan2 = jnp.arctan2
     arctanh = jnp.arctanh
+
+
+class Rotate:
+
+    rot90 = jnp.rot90
+
+
+class Reflect:
+    flip = jnp.flip  # flip along axis
+    flipud = jnp.flipud  # flips up/down
+    fliplr = jnp.fliplr  # flip left/right
 
 
 class LogCmp(Enum):
@@ -45,8 +109,25 @@ class LogCmp(Enum):
     logical_xor = jnp.logical_xor
 
 
-class Join(Enum):
-    ...
+class Join:
+    append = jnp.append  # Appends values to end of array
+    hstack = jnp.hstack
+    vstack = jnp.vstack
+
+
+class Vertical(Join):
+    pass
+
+
+class Horizontal(Join):
+    pass
+
+
+class BoolOp:
+    all = jnp.all
+    alltrue = jnp.alltrue
+
+    any = jnp.any
 
 
 class Stat(Enum):
@@ -59,6 +140,11 @@ class Stat(Enum):
     histogramdd = jnp.histogramdd
 
 
+class Exp:
+    exp = jnp.exp
+    exp2 = jnp.exp2  # [TODO] clarify what this is
+
+
 class Log(Enum):
     log = jnp.log
     log10 = jnp.log10
@@ -66,8 +152,203 @@ class Log(Enum):
     log2 = jnp.log2
 
 
-class Exp(Enum):
-    ...
+class DiscreteOp:
+    floor = jnp.floor
+    ceil = jnp.ceil
+
+
+class BitwiseOp:
+    lshift = jnp.lshift
+    rshift = jnp.rshift
+
+
+class Translate:
+    pad = jnp.pad  # [TODO] does this really belong here?
+
+
+class BinOp:
+
+    divide = jnp.divide  # true division
+
+    amax = jnp.amax  # maximum along axis
+    amin = jnp.amin  # minimum along axis
+
+    power = jnp.power
+
+
+class Piece:
+    """
+    Seemingly more complex composing ops.
+
+    """
+
+    block = jnp.block
+
+
+class AxisOp:
+    sum = jnp.sum
+    cumsum = jnp.cumsum
+
+    average = jnp.average  # average along axis
+    max = jnp.max  # max along axis
+    min = jnp.min
+
+    prod = jnp.prod
+    cumprod = jnp.cumprod
+    cumproduct = jnp.cumproduct  # [TODO] how different?
+
+
+class ElementWiseOp:
+    add = jnp.add  # adds element-wise
+    subtract = jnp.subtract
+
+    # [TODO] clarify this
+    fmax = jnp.fmax
+    fmin = jnp.fmin
+
+
+class FrequencyOp:
+    # [TODO] lol improve name
+    radians = jnp.radians
+    degrees = jnp.degrees
+    rad2deg = jnp.rad2deg
+    deg2rad = jnp.deg2rad
+
+
+# [TODO] think about the typing interfaces!
+class ModularOp(BinOp):
+    """
+    Modular arithmetic operations.
+
+    """
+
+    mod = jnp.mod
+    gcd = jnp.gcd
+    divmod = jnp.divmod
+
+
+class ComplexOp:
+    real = jnp.real
+    imag = jnp.imag
+    angle = jnp.angle  # angle of complex argument
+
+
+class ComparisonOp:
+    """
+    Element-wise comparison operators.
+
+    """
+
+    equal = jnp.equal
+    isclose = jnp.isclose
+
+    greater = jnp.greater
+    greater_equal = jnp.greater_equal
+
+    lesser = jnp.less
+    lesser_equal = jnp.less_equal
+
+    where = jnp.where  # predicate evaluation
+
+    allclose = jnp.allclose  # element-wise equality within tolerance
+
+
+class MatrixOp:
+    dot = jnp.dot  # dot product
+    cross = jnp.cross  # inner product
+    outer = jnp.outer  # outer product
+
+
+class Functional:
+    """
+    Functional selection patterns.
+
+    """
+
+    select = jnp.select  # [TODO] clairfy
+    take = jnp.take
+
+
+class FunctionalAxis:
+    """
+    Functional selection patterns along axis.
+
+    """
+
+    take_along_axis = jnp.take_along_axis
+
+
+class ElementWisePercentile:
+    maximum = jnp.maximum
+    minimum = jnp.minimum
+
+
+class NanStat:
+    """
+    NaN-inclusive axis summary operations.
+
+    """
+
+    nanmean = jnp.nanmean
+    nanmax = jnp.nanmax
+    nanmin = jnp.nanmin
+
+
+class Variance:
+    # average = jnp.average  # mean
+    var = jnp.var  # variance
+    cov = jnp.cov  # covariance
+    std = jnp.std  # standard deviation
+
+
+class Percentile:
+    max = jnp.max
+    min = jnp.min
+    median = jnp.median
+    quantile = jnp.quantile
+    percentile = jnp.percentile
+
+
+class NanPercentile:
+    nanmax = jnp.nanmax
+    nanmin = jnp.nanmin
+    nanmedian = jnp.nanmedian
+    nanquantile = jnp.nanquantile
+    nanpercentile = jnp.nanpercentile
+
+
+class Slice:
+    # [TODO] confirm these are all views
+    diag = jnp.diag  # diagonal on axis
+
+    tri = jnp.tri  # triangle copy
+
+    tril = jnp.tril  # lower-triangle copy
+    triu = jnp.triu  # upper-triangle copy
+
+
+class Clone:
+    # [TODO] IMPORTANT - check that this is the right cat
+    diagonal = jnp.diagonal
+
+
+class Apply:
+    apply_along_axis = jnp.apply_along_axis
+    apply_over_axes = jnp.apply_over_axes
+
+
+class Root:
+    sqrt = jnp.sqrt
+
+
+class Algo:
+    # [TODO] better kind for this?
+    sort = jnp.sort
+
+
+class Index:
+    argsort = jnp.argsort  # sorted array indices
+    argwhere = jnp.argwhere  # non-zero indices, grouped by element
 
 
 class ModArithmetic(Enum):
@@ -79,22 +360,55 @@ class Optimization(Enum):
     argmin = jnp.argmin
 
 
+class BitwiseOp:
+    signbit = jnp.signbit
+
+
+class Window:
+    """
+    Window functions.
+
+    """
+
+    bartlett = jnp.bartlett
+    blackman = jnp.blackman
+    hanning = jnp.hanning
+
+
+class Analytic:
+    """
+    Polynomial operations.
+
+    """
+
+    # [TODO] clarify
+    polyadd = jnp.polyadd
+    polysub = jnp.polysub
+    polymul = jnp.polymul
+
+    polyder = jnp.polyder
+    polyint = jnp.polyint
+    polyval = jnp.polyval
+
+
+class Shape:
+    pass
+
+
+class Transform:
+    """
+    Functional transforms.
+
+    """
+
+    positive = jnp.positive  # y = +x
+    negative = jnp.negative  # y = -x
+    sign = jnp.sign
+    heaviside = jnp.heaviside  # [TODO] does ths really go here??
+
+
 # # TODO: organize numpy api
 numpy_api = [
-    add,
-    all,
-    allclose,
-    alltrue,
-    amax,
-    amin,
-    angle,
-    any,
-    append,
-    apply_along_axis,
-    apply_over_axes,
-    arange,
-    argsort,
-    argwhere,
     around,
     array,
     array_equal,
@@ -106,28 +420,18 @@ numpy_api = [
     atleast_1d,
     atleast_2d,
     atleast_3d,
-    average,
-    bartlett,
     bfloat16,
     bincount,
-    blackman,
-    block,
     bool_,
     broadcast_arrays,
     broadcast_shapes,
     broadcast_to,
     c_,
-    can_cast,
     cbrt,
-    cdouble,
-    ceil,
     character,
     choose,
     clip,
     column_stack,
-    complex128,
-    complex64,
-    complex_,
     complexfloating,
     compress,
     concatenate,
@@ -138,37 +442,20 @@ numpy_api = [
     corrcoef,
     correlate,
     count_nonzero,
-    cov,
-    cross,
     csingle,
-    cumprod,
-    cumproduct,
-    cumsum,
-    deg2rad,
-    degrees,
     delete,
-    diag,
     diagflat,
     diag_indices,
     diag_indices_from,
-    diagonal,
     diff,
     digitize,
     divide,
-    divmod,
-    dot,
-    double,
     dsplit,
     dstack,
-    e,
     ediff1d,
     einsum,
     einsum_path,
-    empty_like,
-    equal,
     euler_gamma,
-    exp,
-    exp2,
     expand_dims,
     expm1,
     extract,
@@ -178,35 +465,20 @@ numpy_api = [
     fix,
     flatnonzero,
     flexible,
-    flip,
-    fliplr,
-    flipud,
     float_,
     float_power,
     floating,
-    floor,
     floor_divide,
-    fmax,
-    fmin,
     fmod,
     frexp,
-    full,
-    full_like,
-    gcd,
     geomspace,
     gradient,
-    greater,
-    greater_equal,
     hamming,
-    hanning,
-    heaviside,
     hsplit,
-    hstack,
     hypot,
     i0,
     identity,
     iinfo,
-    imag,
     indices,
     inexact,
     in1d,
@@ -238,8 +510,6 @@ numpy_api = [
     lcm,
     ldexp,
     left_shift,
-    less,
-    less_equal,
     lexsort,
     linspace,
     load,
@@ -248,13 +518,8 @@ numpy_api = [
     logspace,
     mask_indices,
     matmul,
-    max,
-    maximum,
     meshgrid,
     mgrid,
-    min,
-    minimum,
-    mod,
     modf,
     moveaxis,
     msort,
@@ -265,19 +530,12 @@ numpy_api = [
     nanargmin,
     nancumprod,
     nancumsum,
-    nanmedian,
-    nanpercentile,
-    nanquantile,
-    nanmax,
-    nanmean,
-    nanmin,
     nanprod,
     nanstd,
     nansum,
     nanvar,
     ndarray,
     ndim,
-    negative,
     newaxis,
     nextafter,
     nonzero,
@@ -285,33 +543,14 @@ numpy_api = [
     number,
     object_,
     ogrid,
-    ones_like,
     operator_name,
-    outer,
     packbits,
     pad,
-    percentile,
-    pi,
     piecewise,
-    polyadd,
-    polyder,
-    polyint,
-    polymul,
-    polysub,
-    polyval,
-    positive,
-    power,
-    prod,
-    product,
-    promote_types,
     ptp,
-    quantile,
     r_,
-    rad2deg,
-    radians,
     ravel,
     ravel_multi_index,
-    real,
     reciprocal,
     repeat,
     reshape,
@@ -320,52 +559,36 @@ numpy_api = [
     rint,
     roll,
     rollaxis,
-    rot90,
     round,
     row_stack,
     save,
     savez,
     searchsorted,
-    select,
     set_printoptions,
     setdiff1d,
     setxor1d,
     shape,
     sign,
-    signbit,
     signedinteger,
-    sin,
-    sinc,
     single,
-    sinh,
     size,
     sometrue,
-    sort,
     sort_complex,
     split,
-    sqrt,
     square,
     squeeze,
     stack,
     std,
-    subtract,
-    sum,
     swapaxes,
-    take,
-    take_along_axis,
-    tan,
-    tanh,
     tensordot,
     tile,
     trace,
     trapz,
     transpose,
     tri,
-    tril,
     tril_indices,
     tril_indices_from,
     trim_zeros,
-    triu,
     triu_indices,
     triu_indices_from,
     true_divide,
@@ -377,10 +600,6 @@ numpy_api = [
     unsignedinteger,
     unwrap,
     vander,
-    var,
     vdot,
     vsplit,
-    vstack,
-    where,
-    zeros_like,
 ]

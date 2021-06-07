@@ -1,3 +1,4 @@
+from ..abstract import AbstractArray
 from ..dtype import *
 from ..typed import *
 from ..typed import _Annotated_, _Build_, _Default_, _Eq_
@@ -31,3 +32,7 @@ class TestAbstractTypedArray:
 
     def test_repr(self):
         assert repr(AbstractTypedArray(i32)) == "AbstractTypedArray[i32]"
+
+    def test_getitem(self):
+        arr = AbstractTypedArray(i32)[5, 3]
+        assert isinstance(arr, AbstractArray)

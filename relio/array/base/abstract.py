@@ -1,5 +1,7 @@
 """
+
 Abstract base types for Array, annotated for dtype and dimensions.
+
 """
 
 from typing import Sequence
