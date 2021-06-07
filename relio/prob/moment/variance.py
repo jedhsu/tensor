@@ -1,5 +1,0 @@
-"""
-
-Variance, the second moment.
-
-"""

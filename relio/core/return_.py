@@ -1,5 +1,6 @@
 from typing import Any, Sequence
 
+from sympy import Symbol
 from sympy.concrete.summations import Sum
 
 from .step import Step
@@ -32,13 +33,13 @@ class Return:
     # def split(self, offset) -> tuple[Reward, Return]:
     #     ...
 
-    def rewards(self) -> Iterator[Reward]:
+    def rewards(self):
         """
         Returns an infinite iterator of the rewards.
 
         """
 
-        return Sum(Reward, (t + 1, T))
+        return Sum(Symbol("r"), (Symbol("t") + 1, Symbol("T")))
 
     @classmethod
     def __class_getitem__(cls, items: Sequence[Any]):
