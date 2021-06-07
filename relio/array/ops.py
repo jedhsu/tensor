@@ -64,8 +64,8 @@ class BitwiseBinOp(Enum):
     bitwise_xor = jnp.bitwise_xor
 
 
-class BinOp(Enum):
-    ...
+# class BinOp(Enum):
+#     ...
 
 
 class ForwardTrig(Trig):

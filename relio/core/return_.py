@@ -1,5 +1,7 @@
 from typing import Any, Sequence
 
+from sympy.concrete.summations import Sum
+
 from .step import Step
 
 __all__ = ["Return"]
@@ -25,19 +27,7 @@ __all__ = ["Return"]
 # _Equivalence_
 
 
-class ReturnMeta(type):
-    @classmethod
-    def __prepare__(meta, *args, **kwargs):
-        dct = dict()
-        # dct["step"] = has_step
-        return dct
-
-    def __new__(meta, cls, bases, attributes):
-        return super().__new__(meta, cls, bases, attributes)
-
-
-class Return(metaclass=ReturnMeta):
-    step: Step
+class Return:
 
     # def split(self, offset) -> tuple[Reward, Return]:
     #     ...
@@ -47,6 +37,8 @@ class Return(metaclass=ReturnMeta):
         Returns an infinite iterator of the rewards.
 
         """
+
+        return Sum(Reward, (t + 1, T))
 
     @classmethod
     def __class_getitem__(cls, items: Sequence[Any]):
