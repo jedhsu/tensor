@@ -28,7 +28,7 @@ __all__ = ["Return"]
 # _Equivalence_
 
 
-class Return:
+class Return(Stochastic):
 
     # def split(self, offset) -> tuple[Reward, Return]:
     #     ...

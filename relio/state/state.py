@@ -25,6 +25,11 @@ class Space:
         ...
 
 
+class _ValueFunction_(State):
+    def value_function(self, policy: FixedPolicy) -> Expectation:
+        pass
+
+
 class State(Timestep, Space):
     def sweep(self) -> Iterator[Update]:
         ...
