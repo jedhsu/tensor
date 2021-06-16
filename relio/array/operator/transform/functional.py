@@ -9,7 +9,7 @@ class FunctionalTransform(ArrayTransform):
 
     """
 
-    positive = jnp.positive  # y = +x
-    negative = jnp.negative  # y = -x
-    sign = jnp.sign
-    heaviside = jnp.heaviside  # [TODO] does ths really go here??
+    Positive = jnp.positive  # y = +x
+    Negative = jnp.negative  # y = -x
+    Sign = jnp.sign
+    Heaviside = jnp.heaviside  # [TODO] does ths really go here??

@@ -6,6 +6,8 @@ from .base import ArrayOperator
 class Join(ArrayOperator):
     append = jnp.append  # Appends values to end of array
 
+    Concatenate = jnp.concatenate
+
 
 # [TODO] which one is vertical / horizontal
 

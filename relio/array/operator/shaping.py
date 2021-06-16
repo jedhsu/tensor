@@ -20,6 +20,10 @@ class ShapingOperator(ArrayOperator):
     AtLeast2D = jnp.atleast_2d
     AtLeast3D = jnp.atleast_3d
 
+    Roll = jnp.roll
+
+    Squeeze = jnp.squeeze
+
 
 class Broadcast(ArrayOperator):
     BroadcastArrays = jnp.broadcast_arrays

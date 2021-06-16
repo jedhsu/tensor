@@ -37,11 +37,6 @@ class Stat(Enum):
     median = jnp.median
 
 
-class DiscreteOp:
-    floor = jnp.floor
-    ceil = jnp.ceil
-
-
 class BitwiseOperator:
     LeftShift = jnp.left_shift
     RightShift = jnp.right_shift
@@ -170,6 +165,10 @@ class Slicing:
     tril = jnp.tril  # lower-triangle copy
     triu = jnp.triu  # upper-triangle copy
 
+    Compress = jnp.compress
+
+    Square = jnp.square  # [TODO] not sure if belongs
+
 
 class IndexSlicing:
     DiagonalIndices = jnp.diag_indices
@@ -200,10 +199,16 @@ class Algo:
     Sort = jnp.sort
     SortComplex = jnp.sort_complex
 
+    Unique = jnp.unique
+
+    LexSort = jnp.lexsort
+
 
 class Index:
-    argsort = jnp.argsort  # sorted array indices
-    argwhere = jnp.argwhere  # non-zero indices, grouped by element
+    ArgSort = jnp.argsort  # sorted array indices
+    ArgWhere = jnp.argwhere  # non-zero indices, grouped by element
+
+    Digitize = jnp.digitize  # REturns indices of bins
 
 
 # [TODO] hmm how different from remainder
@@ -253,6 +258,11 @@ class Save:
     Savez = jnp.savez
 
 
+class Load:
+
+    Load = jnp.load
+
+
 class ShapeProperty:
     Shape = jnp.shape
     NumDimensions = jnp.ndim
@@ -262,6 +272,15 @@ class Ravel:
     Ravel = jnp.ravel
     RavelMultiIndex = jnp.ravel_multi_index
     UnravelIndex = jnp.unravel_index
+
+
+class Pythagorean:
+    Hypotenuse = jnp.hypot
+
+
+class Count:
+    BinCount = jnp.bincount
+    CountNonZero = jnp.count_nonzero
 
 
 class Nan:
@@ -283,123 +302,124 @@ class Nan:
     # nanstd,
 
 
+class Numerical:
+    # [TODO] better name
+    Interpolate = jnp.interp
+
+
+class Float:
+    Float_ = jnp.float_
+    FloatPower = jnp.float_power
+    FloatInfo = jnp.finfo
+
+    Floating = jnp.floating
+
+
 # # TODO: organize numpy api
 
+
+class Set:
+    SetPrintOptions = jnp.set_printoptions
+    SetDiff1D = (jnp.setdiff1d,)
+    SetXorld = jnp.setxor1d  # [TODO] wtf is this
+
+
+class Integer:
+    IntegerInfo = jnp.iinfo
+
+    Int_ = jnp.int_
+    RInt = jnp.rint
+
+    Integer = jnp.integer
+    SignedInteger = jnp.signedinteger
+    UnsignedInteger = jnp.unsignedinteger
+
+
+class Types:
+    # [TODO] move to appropriate
+    Character = jnp.character
+
+    Inexact = jnp.inexact
+
+    Number = jnp.number
+
+    BooleanByte = jnp.bool_
+
+    ComplexSingle = jnp.csingle
+
+    ComplexFloating = jnp.complexfloating
+
+
+class Axis:
+
+    NewAxis = jnp.newaxis
+    MoveAxis = jnp.moveaxis
+    RollAxis = jnp.rollaxis
+
+
 numpy_api = [
-    around,
     asarray,
     bfloat16,
-    bincount,
-    bool_,
-    cbrt,
-    character,
     choose,
-    clip,
-    complexfloating,
-    compress,
-    concatenate,
-    convolve,
     copysign,
-    count_nonzero,
-    csingle,
     delete,
     diagflat,
     diff,
-    digitize,
+    multiply,
     divide,
     ediff1d,
     euler_gamma,
     expand_dims,
-    expm1,
     extract,
-    eye,
     fabs,
-    finfo,
-    fix,
     flatnonzero,
     flexible,
-    float_,
-    float_power,
-    floating,
-    floor_divide,
     fmod,
-    frexp,
-    geomspace,
     gradient,
-    hypot,
     i0,
-    identity,
-    iinfo,
     indices,
     ix_,
-    inexact,
     in1d,
     inf,
-    int_,
-    integer,
-    rint,
-    interp,
     intersect1d,
     invert,
     iterable,
-    ldexp,
-    lexsort,
+    geomspace,
     linspace,
-    load,
-    logaddexp,
-    logaddexp2,
     logspace,
     mask_indices,
     matmul,
-    moveaxis,
-    msort,
-    multiply,
     ndarray,
-    newaxis,
     nextafter,
+    trim_zeros,
     nonzero,
     not_equal,
-    number,
     object_,
     operator_name,
     packbits,
     piecewise,
-    ptp,
     r_,
     c_,
     reciprocal,
     repeat,
     result_type,
-    roll,
-    rollaxis,
-    round,
     row_stack,
     column_stack,
     searchsorted,
-    set_printoptions,
-    setdiff1d,
-    setxor1d,
-    sign,
-    signedinteger,
     single,
     size,
     sometrue,
-    square,
-    squeeze,
     swapaxes,
     vdot,
     tensordot,
-    tile,
     trace,
     trapz,
     transpose,
-    trim_zeros,
+    floor_divide,
     true_divide,
     trunc,
-    unique,
     union1d,
     unpackbits,
-    unsignedinteger,
     unwrap,
     vander,
 ]
