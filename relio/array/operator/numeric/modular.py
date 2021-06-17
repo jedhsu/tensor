@@ -20,4 +20,6 @@ class ModularArithmeticOperator(NumericOperator):
     lcm = jnp.lcm
 
     divmod = jnp.divmod
+
     Modf = jnp.modf
+    FMod = jnp.fmod

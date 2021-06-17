@@ -1,9 +1,15 @@
 import jax.numpy as jnp
 
-from .base import ArrayOperator
+from .base import TranscendentalOperator
 
 
-class TrigOperator(ArrayOperator):
+__all__ = [
+    "TrigonometricOperator",
+    "TranscendentalOperator",
+]
+
+
+class TrigonometricOperator(TranscendentalOperator):
     sin = jnp.sin
     sinh = jnp.sinh
 
@@ -14,7 +20,7 @@ class TrigOperator(ArrayOperator):
     tanh = jnp.tanh
 
 
-class InverseTrigOperator(ArrayOperator):
+class InverseTrigonometricOperator(TranscendentalOperator):
     arcsin = jnp.arcsin
     arcsinh = jnp.arcsinh
 
@@ -22,5 +28,5 @@ class InverseTrigOperator(ArrayOperator):
     arccosh = jnp.arccosh
 
     arctan = jnp.arctan
-    arctan2 = jnp.arctan2
+    arctan2 = jnp.arctan2  # [TODO] what is this
     arctanh = jnp.arctanh

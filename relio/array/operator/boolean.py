@@ -14,7 +14,7 @@ class BooleanUnaryOperator(
     all = jnp.all
     alltrue = jnp.alltrue
 
-    any = jnp.any
+    any = jnp.any  # jnp.sometrue is equivalent
 
 
 class BooleanBinaryOperator(

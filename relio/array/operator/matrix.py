@@ -12,10 +12,16 @@ from .base import ArrayOperator
 
 
 class MatrixArithmeticOperator(ArrayOperator):
+    MatrixProduct = jnp.matmul
+
     DotProduct = jnp.dot
     CrossProduct = jnp.cross
 
     OuterProduct = jnp.outer
     InnerProduct = jnp.inner
 
+    TensorProduct = jnp.tensordot  # [TODO] clarify
+
     KroneckerProduct = jnp.kron
+
+    VectorProduct = jnp.vdot  # [TODO] ???

@@ -6,7 +6,7 @@ import jax.numpy as jnp
 class Constant:
     E = jnp.e
     PI = jnp.pi
-
+    INFINITY = jnp.inf
 
 # [TODO] move to types
 class AdditionalTypes:
@@ -24,13 +24,29 @@ class AdditionalTypes:
 
 
 class UnaOp(Enum):
-    abs = jnp.abs
+    abs = jnp.abs  # [TODO] i think this abbreviation alias
     absolute = jnp.absolute
 
+    FloatAbs = jnp.fabs
 
+    
 # class BinOp(Enum):
 #     ...
 
+
+class Multiply(ElementOperator, BinaryOperator, ArrayOperator,):
+    """
+    Element-wise multiplication.
+
+    """
+    func = jnp.multiply
+    
+class Divide(ElementOperator, BinaryOperator, ArrayOperator,):
+    """
+    Element-wise division.
+
+    """
+    func = jnp.divide
 
 class Stat(Enum):
     mean = jnp.mean
@@ -43,12 +59,14 @@ class BitwiseOperator:
 
 
 class Wrangling:
-    pad = jnp.pad  # [TODO] does this really belong here?
+    # [TODO] better name
+    Pad = jnp.pad  # [TODO] does this really belong here?
+    Repeat = jnp.repeat
 
+    TrimZeros = jnp.trim_zeros  # this is also vector op
 
 class BinOp:
 
-    divide = jnp.divide  # true division
 
     amax = jnp.amax  # maximum along axis
     amin = jnp.amin  # minimum along axis
@@ -70,6 +88,8 @@ class Piece:
 
 class AxisOp:
     sum = jnp.sum
+    Trace = jnp.trace  # [TODO] clarify  # sum along diagonals
+
     cumsum = jnp.cumsum
 
     average = jnp.average  # average along axis
@@ -155,15 +175,12 @@ class ValidationOperator:
     IsSubtype = jnp.issubdtype
     IsSubclass = jnp.issubsctype
 
+class Clone:
+
 
 class Slicing:
     # [TODO] confirm these are all views
-    diag = jnp.diag  # diagonal on axis
-
-    tri = jnp.tri  # triangle copy
-
-    tril = jnp.tril  # lower-triangle copy
-    triu = jnp.triu  # upper-triangle copy
+    Diagonal = jnp.diag  # diagonal on axis
 
     Compress = jnp.compress
 
@@ -182,7 +199,12 @@ class IndexSlicing:
 
 class Clone:
     # [TODO] IMPORTANT - check that this is the right cat
-    diagonal = jnp.diagonal
+    Diagonal = jnp.diagonal
+
+    Triangle = jnp.tri
+
+    LowerTriangle = jnp.tril
+    UpperTriangle = jnp.triu
 
 
 class Apply:
@@ -198,6 +220,8 @@ class Algo:
     # [TODO] better kind for this?
     Sort = jnp.sort
     SortComplex = jnp.sort_complex
+
+    SearchSorted = jnp.searchsorted
 
     Unique = jnp.unique
 
@@ -268,20 +292,16 @@ class ShapeProperty:
     NumDimensions = jnp.ndim
 
 
-class Ravel:
-    Ravel = jnp.ravel
-    RavelMultiIndex = jnp.ravel_multi_index
-    UnravelIndex = jnp.unravel_index
-
-
 class Pythagorean:
     Hypotenuse = jnp.hypot
 
 
 class Count:
     BinCount = jnp.bincount
-    CountNonZero = jnp.count_nonzero
 
+    CountNonZero = jnp.count_nonzero
+    FlatNonZero = jnp.flatnonzero
+    NonZero = jnp.nonzero
 
 class Nan:
 
@@ -320,8 +340,6 @@ class Float:
 
 class Set:
     SetPrintOptions = jnp.set_printoptions
-    SetDiff1D = (jnp.setdiff1d,)
-    SetXorld = jnp.setxor1d  # [TODO] wtf is this
 
 
 class Integer:
@@ -334,6 +352,9 @@ class Integer:
     SignedInteger = jnp.signedinteger
     UnsignedInteger = jnp.unsignedinteger
 
+class Differential:
+    # [TODO] check name is appropriate
+    Gradient = jnp.gradient
 
 class Types:
     # [TODO] move to appropriate
@@ -348,78 +369,44 @@ class Types:
     ComplexSingle = jnp.csingle
 
     ComplexFloating = jnp.complexfloating
+    
+    Variadic = jnp.flexible  # [TODO] clarify
+    
+    FloatC = jnp.single  # single-precision C float  # [TODO] clarify
 
+class Iteration:
+    IsIterable = jnp.iterable  # [TODO] clarify
 
-class Axis:
+class Reciprocal(ElementWiseOperator, UnaryOperator, Functional,):
+    func = jnp.reciprocal
 
-    NewAxis = jnp.newaxis
-    MoveAxis = jnp.moveaxis
-    RollAxis = jnp.rollaxis
+class CopySign(BinaryOperator):
+    func = jnp.copysign
 
 
 numpy_api = [
     asarray,
     bfloat16,
     choose,
-    copysign,
     delete,
     diagflat,
     diff,
-    multiply,
-    divide,
-    ediff1d,
-    euler_gamma,
     expand_dims,
-    extract,
-    fabs,
-    flatnonzero,
-    flexible,
-    fmod,
-    gradient,
-    i0,
     indices,
     ix_,
-    in1d,
-    inf,
-    intersect1d,
-    invert,
-    iterable,
-    geomspace,
-    linspace,
-    logspace,
     mask_indices,
-    matmul,
-    ndarray,
     nextafter,
-    trim_zeros,
-    nonzero,
-    not_equal,
     object_,
     operator_name,
-    packbits,
     piecewise,
     r_,
     c_,
-    reciprocal,
-    repeat,
     result_type,
-    row_stack,
-    column_stack,
-    searchsorted,
-    single,
-    size,
     sometrue,
-    swapaxes,
-    vdot,
-    tensordot,
-    trace,
     trapz,
-    transpose,
     floor_divide,
     true_divide,
     trunc,
-    union1d,
-    unpackbits,
     unwrap,
     vander,
 ]

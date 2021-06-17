@@ -37,6 +37,44 @@ class _Display_:
         ...
 
 
+class _Attributes_:
+    @property
+    def flags(self):
+        pass
+
+    @property
+    def shape(self):
+        pass
+
+    @property
+    def strides(self):
+        pass
+
+    @property
+    def number_of_dimensions(self):
+        pass
+
+    @property
+    def data(self):
+        pass
+
+    @property
+    def size(self):
+        pass
+
+    @property
+    def item_size(self):
+        pass
+
+    @property
+    def number_of_bytes(self):
+        pass
+
+    @property
+    def base(self):
+        pass
+
+
 class _Default_:
     @staticmethod
     def i16_square():

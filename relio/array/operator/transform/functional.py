@@ -13,3 +13,5 @@ class FunctionalTransform(ArrayTransform):
     Negative = jnp.negative  # y = -x
     Sign = jnp.sign
     Heaviside = jnp.heaviside  # [TODO] does ths really go here??
+
+    ModifiedBessel0 = jnp.i0

@@ -19,6 +19,10 @@ class Stack(Join):
     VerticalStack = jnp.vstack
     DiagonalStack = jnp.dstack
 
+    # [TODO] clarify
+    RowStack = jnp.row_stack
+    ColumnStack = jnp.column_stack
+
 
 # [TODO] belong?
 class Split(Join):

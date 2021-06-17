@@ -6,22 +6,24 @@ from .base import ArrayOperator
 
 
 class ArrayConstructor(ArrayOperator):
-    zeros = jnp.zeros
-    ones = jnp.ones
+    # low-level constructor
+    Array = jnp.ndarray
 
-    empty = jnp.empty
-    full = jnp.full
+    Zeros = jnp.zeros
+    Ones = jnp.ones
 
-    arange = jnp.arange
+    Empty = jnp.empty
+    Full = jnp.full
+
+    # TODO: IDEALLY want Fn[N, Array[Dtype][N]]
+    # arange: Callable[[N],
+    Range = jnp.arange
 
     Tile = jnp.tile
 
     Eye = jnp.eye
 
     Identity = jnp.identity
-
-    # TODO: IDEALLY want Fn[N, Array[Dtype][N]]
-    # arange: Callable[[N],
 
 
 class ArrayRelativeConstructor(ArrayOperator):

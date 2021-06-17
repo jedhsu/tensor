@@ -1,6 +1,6 @@
 """
 
-Type conversion / casting operators.
+Type casting operators.
 
 """
 
@@ -17,6 +17,5 @@ class CastingOperator(ArrayOperator):
 
     Promote = jnp.promote_types
 
-    EulerGamma = jnp.euler_gamma  # [TODO] clarify
-
     BitIntoU8 = jnp.packbits  # [TODO] clarify
+    U8IntoBit = jnp.unpackbits

@@ -9,15 +9,19 @@ class ComparisonOperator(ArrayOperator):
 
     """
 
-    equal = jnp.equal
-    isclose = jnp.isclose
+    Equal = jnp.equal
+    NotEqual = jnp.not_equal
 
-    greater = jnp.greater
-    greater_equal = jnp.greater_equal
+    IsClose = jnp.isclose
 
-    lesser = jnp.less
-    lesser_equal = jnp.less_equal
+    GreaterThan = jnp.greater
+    GreaterEqualThan = jnp.greater_equal
 
-    where = jnp.where  # predicate evaluation
+    LesserThan = jnp.less
+    LesserEqualThan = jnp.less_equal
 
+    Where = jnp.where  # predicate evaluation
+    Condition = jnp.extract  # #[TODO] also predicate eval? compare
+
+    # [TODO] arity note?
     allclose = jnp.allclose  # element-wise equality within tolerance
