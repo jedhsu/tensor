@@ -8,70 +8,17 @@ class Constant:
     PI = jnp.pi
     INFINITY = jnp.inf
 
-# [TODO] move to types
-class AdditionalTypes:
-    complex128 = jnp.complex128
-    complex64 = jnp.complex64
-    complex_ = jnp.complex_
 
-    double = jnp.double
-    cdouble = jnp.cdouble
-
-    can_cast = jnp.can_cast  # [TODO] clarify
+class ToCategorize:
+    can_cast = jnp.can_cast  # theses are casting rules
+    take_along_axis = jnp.take_along_axis
 
 
 # ----
 
 
-class UnaOp(Enum):
-    abs = jnp.abs  # [TODO] i think this abbreviation alias
-    absolute = jnp.absolute
-
-    FloatAbs = jnp.fabs
-
-    
 # class BinOp(Enum):
 #     ...
-
-
-class Multiply(ElementOperator, BinaryOperator, ArrayOperator,):
-    """
-    Element-wise multiplication.
-
-    """
-    func = jnp.multiply
-    
-class Divide(ElementOperator, BinaryOperator, ArrayOperator,):
-    """
-    Element-wise division.
-
-    """
-    func = jnp.divide
-
-class Stat(Enum):
-    mean = jnp.mean
-    median = jnp.median
-
-
-class BitwiseOperator:
-    LeftShift = jnp.left_shift
-    RightShift = jnp.right_shift
-
-
-class Wrangling:
-    # [TODO] better name
-    Pad = jnp.pad  # [TODO] does this really belong here?
-    Repeat = jnp.repeat
-
-    TrimZeros = jnp.trim_zeros  # this is also vector op
-
-class BinOp:
-
-
-    amax = jnp.amax  # maximum along axis
-    amin = jnp.amin  # minimum along axis
-
-    power = jnp.power
 
 
 class Piece:
@@ -86,53 +33,11 @@ class Piece:
 # [TODO] clarify axis vs elementwise
 
 
-class AxisOp:
-    sum = jnp.sum
-    Trace = jnp.trace  # [TODO] clarify  # sum along diagonals
-
-    cumsum = jnp.cumsum
-
-    average = jnp.average  # average along axis
-    max = jnp.max  # max along axis
-    min = jnp.min
-
-    prod = jnp.prod
-    cumprod = jnp.cumprod
-    cumproduct = jnp.cumproduct  # [TODO] how different?
-
-
 class ElementWiseOp:
     add = jnp.add  # adds element-wise
     subtract = jnp.subtract
 
     # [TODO] clarify this
-    fmax = jnp.fmax
-    fmin = jnp.fmin
-
-
-
-class Functional:
-    """
-    Functional selection patterns.
-
-    """
-
-    select = jnp.select  # [TODO] clairfy
-    take = jnp.take
-
-
-class FunctionalAxis:
-    """
-    Functional selection patterns along axis.
-
-    """
-
-    take_along_axis = jnp.take_along_axis
-
-
-class ElementWisePercentile:
-    maximum = jnp.maximum
-    minimum = jnp.minimum
 
 
 class NanStat:
@@ -152,9 +57,8 @@ class ValidationOperator:
     IsComplex = (jnp.iscomplex,)
     IsComplexObj = jnp.iscomplexobj
     IsFinite = (jnp.isfinite,)
-    IsIn = (jnp.isin,)
-
     IsNan = jnp.isnan
+    IsIn = (jnp.isin,)
 
     IsInfinity = (jnp.isinf,)
     IsPositiveInfinity = jnp.isposinf
@@ -167,8 +71,6 @@ class ValidationOperator:
 
     IsSubtype = jnp.issubdtype
     IsSubclass = jnp.issubsctype
-
-class Clone:
 
 
 class Slicing:
@@ -192,21 +94,13 @@ class IndexSlicing:
 
 class Clone:
     # [TODO] IMPORTANT - check that this is the right cat
-    Diagonal = jnp.diagonal
 
     Triangle = jnp.tri
-
-    LowerTriangle = jnp.tril
-    UpperTriangle = jnp.triu
 
 
 class Apply:
     apply_along_axis = jnp.apply_along_axis
     apply_over_axes = jnp.apply_over_axes
-
-
-class Root:
-    sqrt = jnp.sqrt
 
 
 class Algo:
@@ -221,30 +115,12 @@ class Algo:
     LexSort = jnp.lexsort
 
 
-class Index:
-    ArgSort = jnp.argsort  # sorted array indices
-    ArgWhere = jnp.argwhere  # non-zero indices, grouped by element
-
-    Digitize = jnp.digitize  # REturns indices of bins
-
-
 # [TODO] hmm how different from remainder
 class ModArithmetic(Enum):
     remainder = jnp.remainder
 
 
-class Optimization(Enum):
-    argmax = jnp.argmax
-    argmin = jnp.argmin
-
-
 # [TODO} hmm where is this
-class BitwiseOp:
-    signbit = jnp.signbit
-
-
-class Shape:
-    pass
 
 
 class Array:
@@ -280,21 +156,9 @@ class Load:
     Load = jnp.load
 
 
-class ShapeProperty:
-    Shape = jnp.shape
-    NumDimensions = jnp.ndim
-
-
 class Pythagorean:
     Hypotenuse = jnp.hypot
 
-
-class Count:
-    BinCount = jnp.bincount
-
-    CountNonZero = jnp.count_nonzero
-    FlatNonZero = jnp.flatnonzero
-    NonZero = jnp.nonzero
 
 class Nan:
 
@@ -345,9 +209,11 @@ class Integer:
     SignedInteger = jnp.signedinteger
     UnsignedInteger = jnp.unsignedinteger
 
+
 class Differential:
     # [TODO] check name is appropriate
     Gradient = jnp.gradient
+
 
 class Types:
     # [TODO] move to appropriate
@@ -362,16 +228,23 @@ class Types:
     ComplexSingle = jnp.csingle
 
     ComplexFloating = jnp.complexfloating
-    
+
     Variadic = jnp.flexible  # [TODO] clarify
-    
+
     FloatC = jnp.single  # single-precision C float  # [TODO] clarify
+
 
 class Iteration:
     IsIterable = jnp.iterable  # [TODO] clarify
 
-class Reciprocal(ElementWiseOperator, UnaryOperator, Functional,):
+
+class Reciprocal(
+    ElementWiseOperator,
+    UnaryOperator,
+    Functional,
+):
     func = jnp.reciprocal
+
 
 class CopySign(BinaryOperator):
     func = jnp.copysign
