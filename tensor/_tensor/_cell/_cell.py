@@ -11,7 +11,9 @@ from typing import Any
 
 from .._coordinate import CoordinateSystem
 from ._position import Position
-from ._index import Index
+from .index import Index
+
+__all__ = ["Cell"]
 
 
 class Cell(

@@ -1,5 +1,5 @@
 from ._cell import Cell
-from ._index import Index
+from .index import Index
 
 __all__ = [
     "Cell",

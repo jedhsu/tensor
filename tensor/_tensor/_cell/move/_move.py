@@ -2,15 +2,14 @@
 
     *Cell,   [Move Interface]*
 
-  movement can later be generalized to other spaces!
+  Modify the index of the array under a fixed coordinate system.
 
 """
 
 from dataclasses import dataclass
 
-from typing import Sequence
-
-from ._cell import Cell
+from .._cell import Cell
+from .movement import Movement
 
 __all__ = ["Move"]
 

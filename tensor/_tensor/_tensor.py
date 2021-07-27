@@ -24,3 +24,9 @@ class Tensor:
             *args,
             **kwargs,
         )
+
+    def __getitem__(
+        self,
+        size: int,
+    ):
+        return self._tensor[size]

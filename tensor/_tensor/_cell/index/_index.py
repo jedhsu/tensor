@@ -49,3 +49,13 @@ class Index(
             shape,
             indices,
         )
+
+
+class Test:
+    @staticmethod
+    def index():
+        return Index.create(
+            Tensor([1, 2, 3]),
+            Shape([3]),
+            2,
+        )
