@@ -34,17 +34,6 @@ class CreationalOperator(ArrayOperator):
     Identity = jnp.identity
 
 
-class ArraySpacedConstructor(ArrayOperator):
-    """
-    Constructors based on element-wise difference equation.
-
-    """
-
-    LinearSpaced = jnp.linspace
-    GeometricSpaced = jnp.geomspace
-    LogarithmicSpaced = jnp.logspace
-
-
 class ArrayRelativeConstructor(ArrayOperator):
     ZerosLike = jnp.zeros_like
     OnesLike = jnp.ones_like

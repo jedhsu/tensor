@@ -9,9 +9,8 @@ import numpy as np
 from dataclasses import dataclass
 
 from ._tensor import Tensor
-from .._cell import Cell
-
-from ..._index import Index
+from ._cell import Cell
+from ._cell import Index
 
 __all__ = ["Initialize"]
 

@@ -11,7 +11,7 @@ __all__ = ["CoordinateSystem"]
 
 
 class CoordinateSystem(
-    _CoordinateSystem,
     Fix,
+    _CoordinateSystem,
 ):
     pass

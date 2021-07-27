@@ -1,7 +1,26 @@
-from abc import ABCMeta
+"""
+
+    *HyperbolicCosine*
+
+"""
+
+import jax.numpy as jnp
+
+from ._operator import TrigonometricOperator
+
+__all__ = ["HyperbolicCosine"]
 
 
-class Cosh(
-    HyperbolicOperator,
+class HyperbolicCosine(
+    jnp.cosh,
+    TrigonometricOperator,
 ):
-    __metaclass__ = ABCMeta
+    def __init__(
+        self,
+        *args,
+        **kwargs,
+    ):
+        super(HyperbolicCosine, self).__init__(
+            *args,
+            **kwargs,
+        )

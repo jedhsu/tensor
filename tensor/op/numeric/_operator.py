@@ -4,7 +4,7 @@
 
 """
 
-from ..base import ArrayOperator
+from .._operator import ArrayOperator
 
 
 class NumericOperator(

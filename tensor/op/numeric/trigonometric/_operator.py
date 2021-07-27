@@ -6,19 +6,14 @@
 
 """
 
-import jax.numpy as jnp
+from abc import ABCMeta
 
-from .._operator import TranscendentalOperator
+from .._operator import NumericOperator
 
 __all__ = ["TrigonometricOperator"]
 
 
-class TrigonometricOperator(TranscendentalOperator):
-    sin = jnp.sin
-    sinh = jnp.sinh
-
-    cos = jnp.cos
-    cosh = jnp.cosh
-
-    tan = jnp.tan
-    tanh = jnp.tanh
+class TrigonometricOperator(
+    NumericOperator,
+):
+    __metaclass__ = ABCMeta
