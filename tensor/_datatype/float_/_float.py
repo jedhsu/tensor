@@ -2,7 +2,7 @@
 
     *Float*
 
-  Related to the float.
+  A float datatype.
 
 """
 

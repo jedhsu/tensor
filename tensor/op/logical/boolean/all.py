@@ -8,10 +8,11 @@ import jax.numpy as jnp
 
 from ._operator import BooleanOperator
 
-__all__ = ["HyperbolicCosine"]
+__all__ = ["BooleanAll"]
 
 
 class BooleanAll(
+    jnp.all,
     BooleanOperator,
 ):
     def __init__(
@@ -19,7 +20,7 @@ class BooleanAll(
         *args,
         **kwargs,
     ):
-        super(HyperbolicCosine, self).__init__(
+        super(BooleanAll, self).__init__(
             *args,
             **kwargs,
         )

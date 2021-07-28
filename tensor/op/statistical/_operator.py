@@ -9,10 +9,10 @@
 from abc import ABCMeta
 from .._operator import ArrayOperator
 
-__all__ = ["StatisticalOperator"]
+__all__ = ["StatisticalInference"]
 
 
-class StatisticalOperator(
+class StatisticalInference(
     ArrayOperator,
 ):
     __metaclass__ = ABCMeta

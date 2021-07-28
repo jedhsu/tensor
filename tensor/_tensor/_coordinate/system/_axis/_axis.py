@@ -5,32 +5,40 @@
 """
 
 from dataclasses import dataclass
+from typing import Literal
+
+from .orientation import AxisOrientation
 
 __all__ = ["Axis"]
 
 
 @dataclass
-class Axis:
+class Axis(
+    AxisOrientation,
+):
     ordinal: int
-    origin: int
-    flipped: bool
+
+    def __init__(
+        self,
+        ordinal: int,
+        origin: int,
+        direction: Literal[1, -1],
+    ):
+        self.ordinal = ordinal
+        super(Axis, self).__init__(
+            origin,
+            direction,
+        )
 
     @classmethod
     def create(
         cls,
         ordinal: int,
-        value: int = 0,
+        origin: int = 0,
+        direction: Literal[1, -1] = 1,
     ):
-        flipped = True if value < 0 else False
         return cls(
             ordinal,
-            origin=abs(value),
-            flipped=flipped,
+            origin,
+            direction,
         )
-
-    def update(
-        self,
-        value: int,
-    ):
-        self.flipped = True if value < 0 else False
-        self.origin = abs(value)

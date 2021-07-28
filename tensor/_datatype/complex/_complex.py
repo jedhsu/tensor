@@ -2,7 +2,7 @@
 
     *Complex*
 
-  Related to the boolean.
+  A complex datatype.
 
 """
 

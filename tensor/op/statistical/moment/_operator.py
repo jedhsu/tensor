@@ -1,18 +1,18 @@
 """
 
-    *Statistical Inference*
+    *Moment Inferece*
 
-  Operators performing statistical inference.
+  Operators inferring distribution moments.
 
 """
 
 from abc import ABCMeta
-from .._operator import StatisticalOperator
+from .._operator import StatisticalInference
 
-__all__ = ["StatisticalOperator"]
+__all__ = ["MomentInference"]
 
 
-class StatisticalOperator(
-    StatisticalOperator,
+class MomentInference(
+    StatisticalInference,
 ):
-    pass
+    __metaclass__ = ABCMeta

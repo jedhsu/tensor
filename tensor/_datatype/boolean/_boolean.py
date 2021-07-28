@@ -2,7 +2,7 @@
 
     *Boolean*
 
-  Related to the boolean.
+  A boolean datatype.
 
 """
 

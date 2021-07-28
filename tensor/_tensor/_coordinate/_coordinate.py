@@ -18,9 +18,16 @@ class Coordinate(
 ):
     def __init__(
         self,
-        values: Sequence[int],
+        coordinates: Sequence[int],
     ):
-        return super(Coordinate, self).__new__(
+        super(Coordinate, self).__new__(
             tuple,
-            values,
+            coordinates,
         )
+
+    @classmethod
+    def create(
+        cls,
+        *coordinate: int,
+    ):
+        return cls([*coordinate])

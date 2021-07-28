@@ -9,18 +9,13 @@ from .._axis import Axis
 
 class TestAxis:
     def test_init(self):
-        a = Axis(5, 0, False)
+        a = Axis(5, 0, 1)
         assert isinstance(a, Axis)
+        assert a.ordinal == 5
         assert a.origin == 0
-        assert a.flipped is False
+        assert a.direction == 1
 
     def test_create(self):
         a = Axis.create(5)
         assert a.origin == 0
-        assert a.flipped is False
-
-    def test_update(self):
-        a = Axis(5, 0, False)
-        a.update(-3)
-        assert a.origin == 3
-        assert a.flipped is True
+        assert a.direction == 1

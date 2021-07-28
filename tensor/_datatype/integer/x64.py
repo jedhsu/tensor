@@ -13,7 +13,7 @@ __all__ = ["i64"]
 
 
 class i64(
-    jnp.uint64,
+    jnp.int64,
     Integer,
     Datatype,
 ):

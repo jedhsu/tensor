@@ -13,7 +13,7 @@ __all__ = ["i16"]
 
 
 class i16(
-    jnp.uint16,
+    jnp.int16,
     Integer,
     Datatype,
 ):

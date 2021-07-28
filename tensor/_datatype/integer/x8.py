@@ -13,7 +13,7 @@ __all__ = ["i8"]
 
 
 class i8(
-    jnp.uint8,
+    jnp.int8,
     Integer,
     Datatype,
 ):

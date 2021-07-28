@@ -4,22 +4,30 @@
 
 """
 
-from typing import Sequence
+from dataclasses import dataclass
 
-from .._coordinate import Coordinate
+from typing import Sequence
+from typing import Literal
+
 from ._axis import Axis
 
 __all__ = ["CoordinateSystem"]
 
 
+@dataclass
 class CoordinateSystem:
     axes: Sequence[Axis]
 
     def __init__(
         self,
-        *size: int,
+        dimensions: int,
     ):
-        self.axes = [Axis.create(size) for size in range(len([*size]))]
+        self.axes = [Axis.create(size) for size in range(dimensions)]
 
-    def origins(self) -> Coordinate:
-        return Coordinate([axis.origin for axis in self.axes])
+    def orient(
+        self,
+        orients: Sequence[tuple[int, Literal[1, -1]]],
+    ):
+        assert len(self.axes) == len(orients)
+        for axis, ori in zip(self.axes, orients):
+            axis.orient(*ori)

@@ -13,7 +13,7 @@ __all__ = ["i32"]
 
 
 class i32(
-    jnp.uint32,
+    jnp.int32,
     Integer,
     Datatype,
 ):
