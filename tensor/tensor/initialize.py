@@ -6,38 +6,51 @@
 
 import numpy as np
 
-from dataclasses import dataclass
-
 from ._tensor import Tensor
-from ._cell import Cell
-from ._cell import Index
+from .coordinate import CoordinateSystem
+
 
 __all__ = ["Initialize"]
 
 
-@dataclass
-class Initialize(
+class InitializeTensor(
     Tensor,
 ):
-    _cells: dict[Index, Cell]
-
     def __init__(
         self,
-        cells,
+        _tensor: np.ndarray,
+        coordinate_system: CoordinateSystem,
+    ):
+        super(InitializeTensor, self).__init__(
+            _tensor,
+            coordinate_system,
+        )
+
+    @classmethod
+    def create(
+        cls,
         *args,
         **kwargs,
     ):
-        self.cells = cells
-        super(Initialize, self).__init__(
-            np.array(
-                *args,
-                **kwargs,
-            )
+        _tensor = np.array(
+            *args,
+            **kwargs,
+        )
+        coordinate_system = CoordinateSystem(dimensions=len(_tensor.shape))
+        return cls(
+            _tensor,
+            coordinate_system,
         )
 
 
-#     def __getitem__(
-#         self,
-#         index,
-#     ):
-#         return self._cells[index]
+# [TODO] extend to pixel case
+
+
+class Test:
+    square = InitializeTensor.create(
+        [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+        ]
+    )

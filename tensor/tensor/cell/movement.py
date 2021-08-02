@@ -9,18 +9,18 @@
 from dataclasses import dataclass
 from typing import Sequence
 
-__all__ = ["Movement"]
+__all__ = ["CellMovement"]
 
 
 @dataclass
-class Movement(
+class CellMovement(
     tuple[int],
 ):
     def __init__(
         self,
         values: Sequence[int],
     ):
-        super(Movement, self).__new__(
+        super(CellMovement, self).__new__(
             tuple,
             values,
         )

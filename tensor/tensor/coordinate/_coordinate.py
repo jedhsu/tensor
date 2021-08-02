@@ -14,7 +14,7 @@ __all__ = ["Coordinate"]
 
 @dataclass
 class Coordinate(
-    tuple[int],
+    tuple[int, ...],
 ):
     def __init__(
         self,

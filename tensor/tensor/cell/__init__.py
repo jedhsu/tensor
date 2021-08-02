@@ -1,7 +1,7 @@
 from ._cell import Cell
-from .index import Index
+from .index import CellIndex
 
 __all__ = [
     "Cell",
-    "Index",
+    "CellIndex",
 ]

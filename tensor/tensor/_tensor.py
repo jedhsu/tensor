@@ -7,7 +7,8 @@
 import numpy as np
 from dataclasses import dataclass
 
-from ._cell import Cell
+from .coordinate import CoordinateSystem
+
 
 __all__ = ["Tensor"]
 
@@ -15,21 +16,20 @@ __all__ = ["Tensor"]
 @dataclass
 class Tensor:
     _tensor: np.ndarray
+    coordinate_system: CoordinateSystem
 
-    focused: Cell
-
-    def __init__(
-        self,
+    @classmethod
+    def create(
+        cls,
         *args,
         **kwargs,
     ):
-        self._tensor = np.array(
+        _tensor = np.array(
             *args,
             **kwargs,
         )
-
-    def __getitem__(
-        self,
-        size: int,
-    ):
-        return self._tensor[size]
+        coordinate_system = CoordinateSystem(dimensions=len(_tensor.shape))
+        return cls(
+            _tensor,
+            coordinate_system,
+        )

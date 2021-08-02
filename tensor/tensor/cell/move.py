@@ -6,10 +6,8 @@
 
 """
 
-from dataclasses import dataclass
-
-from .._cell import Cell
-from .movement import Movement
+from ._cell import Cell
+from .movement import CellMovement
 
 __all__ = ["Move"]
 
@@ -21,5 +19,5 @@ class Move(
         self,
         *value: int,
     ) -> Cell:
-        index = self.index + Movement.create(*value)
+        index = self.index + CellMovement.create(*value)
         return self.index.tensor[index]
