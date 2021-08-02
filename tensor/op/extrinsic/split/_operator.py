@@ -1,7 +1,17 @@
-# [TODO] belong?
-class Split(Join):
-    Split = jnp.split
+"""
 
-    HorizontalSplit = jnp.hsplit
-    VerticalSplit = jnp.vsplit
-    DiagonalSplit = jnp.dsplit
+    *Split Operator*   S -> Array[T, G]
+
+"""
+
+from abc import ABCMeta
+
+from .._operator import GeometricOperator
+
+__all__ = ["SplitOperator"]
+
+
+class SplitOperator(
+    GeometricOperator,
+):
+    __metaclass__ = ABCMeta

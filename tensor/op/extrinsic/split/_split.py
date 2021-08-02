@@ -1,6 +1,6 @@
 """
 
-    *Horizontal Split*
+    *Split*
 
 """
 
@@ -10,11 +10,11 @@ import jax.numpy as jnp
 
 from ._operator import SplitOperator
 
-__all__ = ["HorizontalSplit"]
+__all__ = ["Split"]
 
 
 @dataclass
-class HorizontalSplit(
+class Split(
     SplitOperator,
 ):
-    operator = jnp.hsplit
+    operator = jnp.split

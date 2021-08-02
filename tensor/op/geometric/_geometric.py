@@ -2,6 +2,8 @@
 
     *Geometric Operator*
 
+  This is uniform represnetation idea.
+
 """
 
 from abc import ABCMeta

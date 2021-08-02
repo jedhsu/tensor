@@ -32,11 +32,3 @@ class CreationalOperator(ArrayOperator):
     Eye = jnp.eye
 
     Identity = jnp.identity
-
-
-class ArrayRelativeConstructor(ArrayOperator):
-    ZerosLike = jnp.zeros_like
-    OnesLike = jnp.ones_like
-
-    EmptyLike = jnp.empty_like
-    FullLike = jnp.full_like

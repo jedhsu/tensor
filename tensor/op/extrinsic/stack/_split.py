@@ -1,6 +1,6 @@
 """
 
-    *Vertical Stack*
+    *Stack*
 
 """
 
@@ -10,11 +10,11 @@ import jax.numpy as jnp
 
 from ._operator import StackOperator
 
-__all__ = ["VerticalStack"]
+__all__ = ["Stack"]
 
 
 @dataclass
-class VerticalStack(
+class Stack(
     StackOperator,
 ):
-    operator = jnp.vstack
+    operator = jnp.stack

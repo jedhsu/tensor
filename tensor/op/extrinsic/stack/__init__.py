@@ -1,10 +1,12 @@
-class Stack(Join):
-    Stack = jnp.stack  # [TODO] clarify
+from ._operator import StackOperator
 
-    HorizontalStack = jnp.hstack
-    VerticalStack = jnp.vstack
-    DiagonalStack = jnp.dstack
+from ._split import Stack
+from .horizontal import HorizontalStack
+from .vertical import VerticalStack
 
-    # [TODO] clarify
-    RowStack = jnp.row_stack
-    ColumnStack = jnp.column_stack
+__all__ = [
+    "StackOperator",
+    "Stack",
+    "HorizontalStack",
+    "VerticalStack",
+]

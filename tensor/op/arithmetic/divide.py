@@ -1,11 +1,17 @@
-class Divide(
+"""
+
+    *Element Divide*
+
+"""
+
+import jax.numpy as jnp
+
+__all__ = ["ElementDivide"]
+
+
+class ElementDivide(
     ElementOperator,
     BinaryOperator,
     ArrayOperator,
 ):
-    """
-    Element-wise division.
-
-    """
-
-    func = jnp.divide
+    fn: ClassVar = jnp.divide
