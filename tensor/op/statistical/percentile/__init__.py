@@ -1,11 +1,16 @@
-import jax.numpy as jnp
+from ._operator import PercentileOperator
 
-from .base import StatisticalOperator
+from .maximum import Maximum
+from .minimum import Minimum
+from .median import Median
+from .quantile import Quantile
+from .percentile import Percentile
 
-
-class PercentileOperator(StatisticalOperator):
-    max = jnp.max
-    min = jnp.min
-    median = jnp.median
-    quantile = jnp.quantile
-    percentile = jnp.percentile
+__all__ = [
+    "PercentileOperator",
+    "Maximum",
+    "Minimum",
+    "Median",
+    "Quantile",
+    "Percentile",
+]

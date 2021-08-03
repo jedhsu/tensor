@@ -1,16 +1,19 @@
-import jax.numpy as jnp
+from ._operator import Logarithm
 
-from .base import TranscendentalOperator
+from .natural import NaturalLogarithm
+from .bitwise import BitwiseLogarithm
+from .denary import DenaryLogarithm
 
 
-__all__ = ["LogarithmicOperator"]
+__all__ = [
+    "Logarithm",
+    "NaturalLogarithm",
+    "BitwiseLogarithm",
+    "DenaryLogarithm",
+]
 
 
-class LogarithmicOperator(TranscendentalOperator):
-    Log = jnp.log
-    Log2 = jnp.log2
-    Log10 = jnp.log10
-    Log1p = jnp.log1p
-
-    LogAddExp = jnp.logaddexp
-    LogAddExp2 = jnp.logaddexp2
+# class LogarithmicOperator(TranscendentalOperator):
+#     Log1p = jnp.log1p
+#     LogAddExp = jnp.logaddexp
+#     LogAddExp2 = jnp.logaddexp2

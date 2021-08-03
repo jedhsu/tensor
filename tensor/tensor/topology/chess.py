@@ -14,6 +14,7 @@ from ..cells import Cells
 from ..movement import Movement
 from ..movement import MovementPaths
 
+from ._topology import Topology
 
 __all__ = ["ChessTopology"]
 

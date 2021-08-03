@@ -1,23 +1,20 @@
 """
 
-Frequency / window / fft operators.
+    *Window*
+
+  Frequency / window / fft operators.
 
 """
 
 
-import jax.numpy as jnp
+from abc import ABCMeta
 
-from .base import ArrayTransform
+from .._operator import TensorMorphism
+
+__all__ = ["Window"]
 
 
-class Window(ArrayTransform):
-    """
-    Window functions.
-
-    """
-
-    Bartlett = jnp.bartlett
-    Blackman = jnp.blackman
-    Hamming = jnp.hamming
-    Hanning = jnp.hanning
-    Kaiser = jnp.kaiser
+class Window(
+    TensorMorphism,
+):
+    __metaclass__ = ABCMeta

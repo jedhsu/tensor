@@ -31,3 +31,7 @@ class MovementPath(
         *value: int,
     ):
         return cls([*value])
+
+    def __hash__(self) -> int:
+        # [TODO] this needs work
+        return int("".join([str(i) + str(el) for i, el in enumerate(self)]))

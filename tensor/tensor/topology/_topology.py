@@ -17,11 +17,9 @@
 from abc import ABCMeta
 from abc import abstractmethod
 
-from dataclasses import dataclass
-
 from .._tensor import Tensor
 
-from ..cell import CellIndex
+from ..cell import Cell
 from ..cells import Cells
 
 from ..movement import Movement
@@ -30,14 +28,12 @@ from ..movement import MovementPaths
 __all__ = ["Topology"]
 
 
-@dataclass
 class Topology:
     __metaclass__ = ABCMeta
 
     @abstractmethod
     def spawn(
         self,
-        *movement: Movement,
     ) -> MovementPaths:
         raise NotImplementedError
 
@@ -45,6 +41,6 @@ class Topology:
     def links(
         self,
         tensor: Tensor,
-        index: CellIndex,
+        cell: Cell,
     ) -> Cells:
-        raise NotImplementedError
+        movements = []

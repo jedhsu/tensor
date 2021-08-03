@@ -51,22 +51,23 @@ class MovementPaths(
 
     def into_paths(
         self,
+        *,
         dimensions: int,
-    ) -> list[MovementPath]:
+    ) -> set[MovementPath]:
         # [TODO] SUPER INEFFICIENT
         permutations = self.permute_dimensions(dimensions)
-        paths = []
+        paths = set()
         for permutation in permutations:
             for movement in self:
                 mvmt = [0] * dimensions
                 for index, step in zip(permutation, movement):
                     mvmt[index] = step
-                paths.append(MovementPath(mvmt))
+                paths.add(MovementPath(mvmt))
         return paths
 
 
 class Test:
-    checkboard = MovementPaths(
+    chessboard = MovementPaths(
         (-1,),
         (1,),
     )

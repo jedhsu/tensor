@@ -1,18 +1,20 @@
 """
 
-    *Is-Close*
+    *Bartlett Window*
 
 """
 
+from dataclasses import dataclass
+
 import jax.numpy as jnp
 
-from ._operator import GeometricProperty
+from ._operator import Window
 
-__all__ = ["Count"]
+__all__ = ["BartlettWindow"]
 
 
-class Count(
-    jnp.size,
-    GeometricProperty,
+@dataclass
+class BartlettWindow(
+    Window,
 ):
-    pass
+    operator = jnp.bartlett

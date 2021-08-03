@@ -10,7 +10,7 @@ from .index import IndexTensor
 from .index import Test as IndexTensorTest
 
 from .cell import Cell
-from .cell import CellMovement
+from .movement import MovementPath
 
 
 from .shape import Shape
@@ -27,7 +27,7 @@ class Move(
     ) -> Cell:
         assert len([*coordinate]) == len(self._tensor._tensor.shape), ValueError
         index = self.focus.index.add(
-            CellMovement.create(*coordinate),
+            MovementPath.create(*coordinate),
             shape=Shape(self._tensor._tensor.shape),
         )
         self.focused = self[index.coordinate]
