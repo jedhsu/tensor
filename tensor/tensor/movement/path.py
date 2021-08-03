@@ -1,26 +1,26 @@
 """
 
-    *Movement*
+    *Movement Path*
 
-  movement can later be generalized to other spaces!
+  An exact movement.
 
 """
 
 from dataclasses import dataclass
 from typing import Sequence
 
-__all__ = ["CellMovement"]
+__all__ = ["MovementPath"]
 
 
 @dataclass
-class CellMovement(
+class MovementPath(
     tuple[int],
 ):
     def __init__(
         self,
         values: Sequence[int],
     ):
-        super(CellMovement, self).__new__(
+        super(MovementPath, self).__new__(
             tuple,
             values,
         )

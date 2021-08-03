@@ -19,3 +19,4 @@ class TestIndexTensor:
     def test_getitem(self):
         tensor = Test.square
         assert tensor[0, 0].index == CellIndex(0, 0)
+        # assert tensor[0, 0].content == 1

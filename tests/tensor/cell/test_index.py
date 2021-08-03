@@ -35,6 +35,12 @@ class TestCellIndex:
         assert a.bound((1, -2, 3), Shape.create(2, 2, 2)) == (1, 0, 2)
 
     def test_hash(self):
-        a = CellIndex(0, 0, 0)
-        b = CellIndex(0, 0, 0)
-        assert a == b
+        # [TODO] need to validate this hash fn
+        a = CellIndex(0)
+        assert hash(a) == 0
+
+        b = CellIndex(0, 0)
+        assert hash(b) == 10
+
+        c = CellIndex(0, 0, 0)
+        assert hash(c) == 1020

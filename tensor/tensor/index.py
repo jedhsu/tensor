@@ -6,7 +6,6 @@
 
 
 from dataclasses import dataclass
-from itertools import permutations
 from itertools import product
 
 from typing import Sequence
@@ -57,3 +56,4 @@ class IndexTensor:
 
 class Test:
     square = IndexTensor.create(InitializeTest.square)
+    square_5x5 = IndexTensor.create(InitializeTest.square_5x5)

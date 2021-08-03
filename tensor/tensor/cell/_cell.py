@@ -11,7 +11,6 @@ from typing import Any
 from dataclasses import dataclass
 
 from .._tensor import Tensor
-from ..coordinate import CoordinateSystem
 from .position import Position
 from .index import CellIndex
 
@@ -39,6 +38,3 @@ class Cell(
         super(Cell, self).__init__(
             tensor.coordinate_system,
         )
-
-    def __hash__(self) -> str:
-        return "".join([str(el) for el in self.index])

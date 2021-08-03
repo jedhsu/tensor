@@ -12,8 +12,8 @@ from dataclasses import dataclass
 from typing import Sequence
 
 from ..coordinate import Coordinate
+from ..movement import MovementPath
 from ..shape import Shape
-from .movement import CellMovement
 
 __all__ = ["CellIndex"]
 
@@ -40,7 +40,7 @@ class CellIndex:
 
     def add(
         self,
-        change: CellMovement,
+        change: MovementPath,
         *,
         shape: Shape,
     ):
@@ -64,7 +64,7 @@ class CellIndex:
         return tuple(bounded)
 
     def __hash__(self) -> int:
-        return int("".join([str(el) for el in self]))
+        return int("".join([str(i) + str(el) for i, el in enumerate(self.coordinate)]))
 
 
 class Test:
