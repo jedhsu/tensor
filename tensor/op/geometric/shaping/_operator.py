@@ -1,8 +1,6 @@
 """
 
-    *Manipulation*
-
-  Functional manipulation.
+    *Shaping Operator*
 
 """
 
@@ -10,10 +8,10 @@ from abc import ABCMeta
 
 from .._operator import GeometricOperator
 
-__all__ = ["Manipulation"]
+__all__ = ["ShapingOperator"]
 
 
-class Manipulation(
+class ShapingOperator(
     GeometricOperator,
 ):
     __metaclass__ = ABCMeta

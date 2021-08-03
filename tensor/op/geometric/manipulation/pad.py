@@ -12,9 +12,10 @@ __all__ = ["Pad"]
 
 
 class Pad(
-    jnp.pad,
     Manipulation,
 ):
+    operator = jnp.pad
+
     def __init__(
         self,
         *args,
