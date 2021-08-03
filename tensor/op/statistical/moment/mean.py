@@ -1,6 +1,6 @@
 """
 
-    *Mean Inferece*
+    *Mean*
 
 """
 
@@ -8,10 +8,10 @@ import jax.numpy as jnp
 
 from ._operator import StatisticalInference
 
-__all__ = ["MeanInference"]
+__all__ = ["Mean"]
 
 
-class MeanInference(
+class Mean(
     StatisticalInference,
 ):
     fn = jnp.mean
@@ -21,7 +21,7 @@ class MeanInference(
         *args,
         **kwargs,
     ):
-        super(MeanInference, self).__init__(
+        super(Mean, self).__init__(
             *args,
             **kwargs,
         )

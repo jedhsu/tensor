@@ -1,18 +1,18 @@
 """
 
-    *Covariance*
+    *Correlation*
 
 """
 
 import jax.numpy as jnp
 
-from .._operator import StatisticalInference
+from ._operator import CorrelationInference
 
-__all__ = ["Covariance"]
+__all__ = ["Correlation"]
 
 
-class Covariance(
-    StatisticalInference,
+class Correlation(
+    CorrelationInference,
 ):
     fn = jnp.cov
 
@@ -21,7 +21,7 @@ class Covariance(
         *args,
         **kwargs,
     ):
-        super(Covariance, self).__init__(
+        super(Correlation, self).__init__(
             *args,
             **kwargs,
         )

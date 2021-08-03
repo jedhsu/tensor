@@ -6,13 +6,13 @@
 
 import jax.numpy as jnp
 
-from .._operator import StatisticalInference
+from ._operator import CorrelationInference
 
 __all__ = ["Covariance"]
 
 
 class Covariance(
-    StatisticalInference,
+    CorrelationInference,
 ):
     fn = jnp.cov
 

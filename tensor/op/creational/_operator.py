@@ -1,6 +1,6 @@
 """
 
-    *Creational Operator*   S -> Array[T, G]
+    *Create*   S -> Array[T, G]
 
   Operators that instantiate objects of the type.
 
@@ -13,7 +13,7 @@ from .._operator import ArrayOperator
 # [TODO] typing can get much tighter
 
 
-class CreationalOperator(ArrayOperator):
+class Create(ArrayOperator):
     # low-level constructor
     Array = jnp.ndarray
 

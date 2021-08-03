@@ -1,8 +1,8 @@
 """
 
-    *Bitwise Arithmetic Operator*
+    *Bitwise Logical Operator*
 
-  A bitwise elemental arithmetic operator.
+  A bitwise elemental logical operator.
 
 """
 
