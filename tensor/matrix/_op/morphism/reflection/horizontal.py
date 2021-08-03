@@ -6,13 +6,13 @@
 
 import jax.numpy as jnp
 
-from ._operator import StatisticalInference
+from ._operator import Reflect
 
 __all__ = ["HorizontalReflect"]
 
 
-class MeanInference(
-    StatisticalInference,
+class HorizontalReflect(
+    Reflect,
 ):
     fn = jnp.flipud
 
@@ -21,7 +21,7 @@ class MeanInference(
         *args,
         **kwargs,
     ):
-        super(MeanInference, self).__init__(
+        super(HorizontalReflect, self).__init__(
             *args,
             **kwargs,
         )

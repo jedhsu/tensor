@@ -12,9 +12,10 @@ __all__ = ["BooleanAll"]
 
 
 class BooleanAll(
-    jnp.all,
     BooleanOperator,
 ):
+    operator = jnp.all
+
     def __init__(
         self,
         *args,

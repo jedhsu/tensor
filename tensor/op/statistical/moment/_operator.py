@@ -7,6 +7,7 @@
 """
 
 from abc import ABCMeta
+
 from .._operator import StatisticalInference
 
 __all__ = ["MomentInference"]
