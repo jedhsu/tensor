@@ -3,6 +3,7 @@ from ._operator import Logarithm
 from .natural import NaturalLogarithm
 from .bitwise import BitwiseLogarithm
 from .denary import DenaryLogarithm
+from .natural import NaturalLogarithm
 
 
 __all__ = [
@@ -10,6 +11,7 @@ __all__ = [
     "NaturalLogarithm",
     "BitwiseLogarithm",
     "DenaryLogarithm",
+    "NaturalLogarithm",
 ]
 
 
