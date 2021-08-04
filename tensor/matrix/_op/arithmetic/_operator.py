@@ -1,15 +1,15 @@
 """
 
-    *Matrix Product*
+    *Matrix Arithmetic*
 
 """
 
-__all__ = ["MatrixProduct"]
+__all__ = ["MatrixArithmetic"]
 
 from .._operator import MatrixOperator
 
 
-class MatrixProduct(
+class MatrixArithmetic(
     MatrixOperator,
 ):
     pass
