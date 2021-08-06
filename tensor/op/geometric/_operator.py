@@ -1,8 +1,10 @@
 """
 
-    *Geometric Operator*
+    *Geometric Operator*   :: Array[T][S] --> Array[T][T]
 
-  This is uniform represnetation idea.
+  Operators mapping on the "extrinsic", i.e. what is not contained.
+
+  This is mostly the geometry of the array. [TODO] confirm
 
 """
 
