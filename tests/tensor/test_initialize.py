@@ -3,7 +3,6 @@
     *Initialize Tensor,   [Unit Tests]*
 
 """
-
 from tensor.tensor.initialize import InitializeTensor
 from tensor.tensor.initialize import Tensor
 from tensor.tensor.initialize import Test

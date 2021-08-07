@@ -3,11 +3,10 @@
     *Cell,   [Unit Tests]*
 
 """
-
-from tensor.tensor.index import Test
 from tensor.tensor.cell._cell import Cell
-from tensor.tensor.cell._cell import Tensor
 from tensor.tensor.cell._cell import CellIndex
+from tensor.tensor.cell._cell import Tensor
+from tensor.tensor.index import Test
 
 
 class TestCell:

@@ -3,11 +3,10 @@
     *Movement Paths,   [Unit Tests]*
 
 """
-
-from tensor.tensor.movement.paths import Test
 from tensor.tensor.movement.paths import Movement
 from tensor.tensor.movement.paths import MovementPath
 from tensor.tensor.movement.paths import MovementPaths
+from tensor.tensor.movement.paths import Test
 
 
 class TestMovementPaths:

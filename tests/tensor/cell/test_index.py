@@ -3,11 +3,10 @@
     *Test Cell Index*
 
 """
-
-from tensor.tensor.cell.index import Test
+from tensor.tensor.cell.index import CellIndex
 from tensor.tensor.cell.index import MovementPath
 from tensor.tensor.cell.index import Shape
-from tensor.tensor.cell.index import CellIndex
+from tensor.tensor.cell.index import Test
 
 
 class TestCellIndex:

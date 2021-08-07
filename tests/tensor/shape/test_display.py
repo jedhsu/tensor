@@ -3,9 +3,8 @@
     *Display,   [Unit Tests]*
 
 """
-
-from tensor.tensor.shape.display import Test
 from tensor.tensor.shape.display import Display
+from tensor.tensor.shape.display import Test
 
 
 class TestDisplay:

@@ -3,7 +3,6 @@
     *Annotation,   [Unit Tests]*
 
 """
-
 from tensor.tensor.shape.annotation import Annotation
 
 

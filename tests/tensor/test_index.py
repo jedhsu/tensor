@@ -3,9 +3,8 @@
     *Index Tensor,   [Unit Tests]*
 
 """
-
-from tensor.tensor.index import IndexTensor
 from tensor.tensor.index import CellIndex
+from tensor.tensor.index import IndexTensor
 from tensor.tensor.index import Test
 
 

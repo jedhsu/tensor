@@ -1,16 +1,57 @@
 [tool.poetry]
 name = "tensor"
 version = "0.1.0"
-description = ""
-authors = ["Jed Hsu <jedhsu@pm.me>"]
+description = "Tensor computations."
+authors = ["jedhsu <jedhsu@pm.me>"]
+readme = "README.md"
+repository = "https://github.com/jedhsu/tensor"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-jax = "^0.1.55"
+torch = "^1.9.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+mypy = "^0.910"
+pytest = "^6.2"
+coverage = "^5.5"
+pytest-cov = "^2.12.1"
+pytest-mock = "^3.6.1"
+flake8 = "^3.9.2"
+flake8-bugbear = "^21.4.3"
+flake8-bandit = "^2.1.2"
+flake8-annotations = "^2.6.2"
+flake8-docstrings = "^1.6.0"
+safety = "^1.10.3"
+typeguard = "^2.12.1"
+darglint = "^1.8.0"
+xdoctest = "^0.15.5"
+Sphinx = "^4.1.2"
+sphinx-autodoc-typehints = "^1.12.0"
+typical = "^2.4.2"
+marshmallow = "^3.13.0"
+black = "^21.7b0"
+pre-commit-hooks = "^4.0.1"
+pre-commit = "^2.14.0"
+reorder-python-imports = "^2.6.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["tensor"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+
+[tool.mypy]
+strict = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true

@@ -1,6 +1,11 @@
-## tensor
+.. |Codecov| image:: https://codecov.io/gh/jedhsu/tensor/branch/main/graph/badge.svg
+   :target: https://codecov.io/gh/jedhsu/tensor
+   :alt: Codecov
 
-`tensor`{.:python} is an array manipulation library built on top of JAX numpy.
+tensor
+======
+
+`tensor`{.:python} is a tensor manipulation library.
 
 It provides the following features:
 
@@ -18,6 +23,8 @@ Framework for network architecture, framed as a network topology.
 
 type annotation for arrays
 
+
+[TODO} try and integrate in networkx complex graph structs
 
 modularization of array operators. Every operator is a class. This enables symbolic expression computation at the type-level (what else?)
 

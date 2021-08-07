@@ -3,9 +3,8 @@
     *Shape,   [Unit Tests]*
 
 """
-
-from tensor.tensor.shape._shape import Test
 from tensor.tensor.shape._shape import Shape
+from tensor.tensor.shape._shape import Test
 
 
 class TestShape:

@@ -1,3 +1,6 @@
+.README/
+dist/
+
 # Custom name bindings
 *_reflib/*  # Reference dev libs
 
